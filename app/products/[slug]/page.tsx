@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 import { SafeImage } from "@/components/SafeImage";
+import { AddToCartButton } from "@/components/AddToCartButton";
 import {
   Carousel,
   CarouselContent,
@@ -108,14 +109,12 @@ export default async function ProductPage({
           </div>
 
           <div className="flex flex-col gap-3 pt-6 border-t border-dashed border-border">
-            <Button size="lg" className="rounded-none h-16 text-lg font-bold uppercase tracking-widest gap-3">
-              <ShoppingCart className="h-5 w-5" />
-              Secure Checkout
-            </Button>
+            <AddToCartButton product={product} />
             <Button size="lg" variant="outline" className="rounded-none h-16 text-lg font-bold uppercase tracking-widest">
               Add to Wishlist
             </Button>
           </div>
+
 
           <div className="grid grid-cols-2 gap-4 mt-4">
             <div className="p-4 border border-dashed border-border text-center">

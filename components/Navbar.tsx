@@ -9,6 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { CartSheet } from "./CartSheet";
 
 export default async function Navbar() {
   const categories = await getCategories();
@@ -34,6 +35,7 @@ export default async function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
+          <CartSheet />
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
