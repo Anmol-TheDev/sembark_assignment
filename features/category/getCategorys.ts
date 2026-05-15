@@ -1,6 +1,6 @@
 import axiosClient from "@/lib/axios";
 
- interface Category {
+ export interface Category {
   id: number;
   name: string;
   slug: string;
