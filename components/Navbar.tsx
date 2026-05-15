@@ -25,7 +25,7 @@ export default async function Navbar() {
             {categories.slice(0, 5).map((category) => (
               <Link
                 key={category.id}
-                href={`/categories/${category.slug}`}
+                href={`/?category=${category.id}`}
                 className="text-sm font-medium transition-colors hover:text-primary"
               >
                 {category.name}
@@ -54,7 +54,7 @@ export default async function Navbar() {
                 {categories.map((category) => (
                   <Link
                     key={category.id}
-                    href={`/categories/${category.slug}`}
+                    href={`/?category=${category.id}`}
                     className="text-lg font-medium transition-colors hover:text-primary"
                   >
                     {category.name}
