@@ -39,7 +39,7 @@ export default async function Navbar() {
           <CartSheet />
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="md:hidden h-10 w-10 sm:h-9 sm:w-9 transition-transform active:scale-95">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
@@ -48,7 +48,7 @@ export default async function Navbar() {
               <SheetHeader>
                 <SheetTitle>Categories</SheetTitle>
               </SheetHeader>
-              <nav className="flex flex-col gap-4 mt-6">
+              <nav className="flex flex-col gap-4 mt-6 p-4">
                 <Link href="/" className="text-lg font-semibold">
                   Home
                 </Link>

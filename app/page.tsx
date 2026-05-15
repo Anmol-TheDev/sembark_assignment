@@ -32,7 +32,7 @@ export default async function Home({
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
             Featured Products
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl">
+          <p className="text-sm md:text-xl text-muted-foreground max-w-2xl">
             Discover our curated collection of premium products, designed for
             quality and style.
           </p>

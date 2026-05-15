@@ -20,7 +20,7 @@ export function ProductCard({ product }: { product: Product }) {
             {product.category.name}
           </Badge>
         </div>
-        <CardContent className="p-5 space-y-3">
+        <CardContent className="p-2 sm:p-5 space-y-3">
           <div className="space-y-1">
             <h3 className="line-clamp-1 font-bold text-lg uppercase tracking-tight transition-colors group-hover:text-primary">
               {product.title}

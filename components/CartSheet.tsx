@@ -41,7 +41,7 @@ export function CartSheet() {
         {totalItems > 0 ? (
           <>
             <ScrollArea className="flex-1 pr-6 mt-6">
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-5 pl-4">
                 {cart.map((item) => (
                   <div key={item.id} className="space-y-4">
                     <div className="flex gap-4">
