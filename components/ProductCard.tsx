@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/SafeImage";
 import { Product } from "@/features/products/product.action";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,7 +9,7 @@ export function ProductCard({ product }: { product: Product }) {
     <Link href={`/products/${product.slug}`}>
       <Card className="group overflow-hidden rounded-none border border-dashed border-border bg-background transition-all hover:border-primary pt-0">
         <div className="relative aspect-square overflow-hidden bg-secondary/20">
-          <Image
+          <SafeImage
             src={product.images[0]}
             alt={product.title}
             fill

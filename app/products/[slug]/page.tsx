@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
-import Image from "next/image";
+import { SafeImage } from "@/components/SafeImage";
 import {
   Carousel,
   CarouselContent,
@@ -49,7 +49,7 @@ export default async function ProductPage({
                 {product.images.map((image, index) => (
                   <CarouselItem key={index}>
                     <div className="relative aspect-square overflow-hidden bg-secondary/20 border border-dashed border-border">
-                      <Image
+                      <SafeImage
                         src={image}
                         alt={`${product.title} ${index + 1}`}
                         fill
@@ -73,7 +73,7 @@ export default async function ProductPage({
                 key={index}
                 className="relative aspect-square overflow-hidden bg-secondary/20 border border-dashed border-border transition-all hover:border-primary"
               >
-                <Image
+                <SafeImage
                   src={image}
                   alt={`${product.title} ${index + 1}`}
                   fill
