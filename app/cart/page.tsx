@@ -55,7 +55,7 @@ export default function CartPage() {
               <TableHeader className="border-b border-dashed border-border pointer-events-none">
                 <TableRow className="hover:bg-transparent border-none">
                   <TableHead className="w-[100px] font-bold uppercase tracking-widest text-[10px]">Item</TableHead>
-                  <TableHead className="font-bold uppercase tracking-widest text-[10px]">Details</TableHead>
+                  <TableHead className="font-bold uppercase tracking-widest text-[10px] whitespace-normal">Details</TableHead>
                   <TableHead className="text-center font-bold uppercase tracking-widest text-[10px]">Quantity</TableHead>
                   <TableHead className="text-right font-bold uppercase tracking-widest text-[10px]">Total</TableHead>
                 </TableRow>
@@ -73,10 +73,10 @@ export default function CartPage() {
                         />
                       </div>
                     </TableCell>
-                    <TableCell className="py-6">
-                      <div className="space-y-1">
-                        <h3 className="font-bold uppercase tracking-tight text-sm">{item.title}</h3>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    <TableCell className="py-6 whitespace-normal">
+                      <div className="space-y-1 max-w-[200px]">
+                        <h3 className="font-bold uppercase tracking-tight text-sm line-clamp-1">{item.title}</h3>
+                        <p className="text-[10px] font-bold uppercase tracking-widest line-clamp-1 text-muted-foreground">
                           {item.category.name}
                         </p>
                       </div>
@@ -84,23 +84,9 @@ export default function CartPage() {
                     <TableCell className="py-6">
                       <div className="flex items-center justify-center">
                         <div className="flex items-center border border-dashed border-border">
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8 rounded-none"
-                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          >
-                            <Minus className="h-3 w-3" />
-                          </Button>
+
                           <span className="w-10 text-center text-xs font-bold">{item.quantity}</span>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8 rounded-none"
-                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          >
-                            <Plus className="h-3 w-3" />
-                          </Button>
+
                         </div>
                       </div>
                     </TableCell>

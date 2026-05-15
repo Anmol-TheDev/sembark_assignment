@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
   SheetFooter,
+  SheetClose,
 } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
@@ -101,11 +102,13 @@ export function CartSheet() {
                 <span className="text-2xl font-black tracking-tighter">${totalPrice}</span>
               </div>
               <div className="grid gap-2">
-                <Link href="/cart" className="w-full">
-                  <Button className="w-full rounded-none h-14 font-bold uppercase tracking-widest" variant="outline">
-                    View Full Cart
-                  </Button>
-                </Link>
+                <SheetClose asChild>
+                  <Link href="/cart" className="w-full">
+                    <Button className="w-full rounded-none h-14 font-bold uppercase tracking-widest" variant="outline">
+                      View Full Cart
+                    </Button>
+                  </Link>
+                </SheetClose>
                 <Button className="w-full rounded-none h-14 font-bold uppercase tracking-widest">
                   Checkout
                 </Button>
