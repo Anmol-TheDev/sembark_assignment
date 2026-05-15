@@ -1,18 +1,60 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test.describe("Home Page", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("http://localhost:3000/");
+  })
+  test("should have correct meta data ", async ({ page }) => {
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
+    await expect(page).toHaveTitle(" Create Next App");
+    await expect(page.getByRole("heading", { name: "Featured Products" })).toBeVisible();
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  })
+  test("should render products card ", async ({ page }) => {
+    const productCard = page.getByTestId("productCard");
+    await expect(productCard.first()).toBeVisible()
+    await productCard.first().click();
+    await expect(page).toHaveURL(/\/products\/.+/);
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+  })
+  test("Navbar category are rendered", async ({ page }) => {
+    const categoryLink = page.getByTestId("categoryLink");
+    await expect(categoryLink.first()).toBeVisible();
+    await categoryLink.first().click();
+    
+  })
 
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-});
+})
+
+test.describe("Product Details Page",()=>{
+    test.beforeEach(async ({ page }) => {
+    await page.goto("http://localhost:3000/");
+  })
+    test("product card should render detail page ", async({page})=>{
+        await page.getByTestId("productCard").first().click();
+        await expect(page).toHaveURL(/\/products\/.+/);
+        await expect(page.getByRole("button",{name : "SECURE CHECKOUT"})).toBeVisible();
+    })
+    test("add to cart button should work", async({page})=>{
+      await page.getByTestId("productCard").first().click();
+      const addToCartButton = page.getByRole("button",{name : "SECURE CHECKOUT"});
+      await addToCartButton.click();
+      
+    })
+    
+})
+
+test.describe("testing cart sheet", ()=>{
+    test.beforeEach(async ({ page }) => {
+    await page.goto("http://localhost:3000/");
+  })
+    test("testing cart icon ", async({page})=>{
+        await page.getByTestId("cart").click();
+        const cartButton = page.getByRole("button",{name : "CHECKOUT"});
+        if( await cartButton.isVisible()){
+           await cartButton.click();
+        } else{
+          await expect(page.getByText(/Your cart is empty/i)).toBeVisible()
+        }
+    })  
+})

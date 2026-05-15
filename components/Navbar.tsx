@@ -26,6 +26,7 @@ export default async function Navbar() {
               <Link
                 key={category.id}
                 href={`/?category=${category.id}`}
+                data-testid="categoryLink"
                 className="text-sm font-medium transition-colors hover:text-primary"
               >
                 {category.name}
@@ -55,6 +56,7 @@ export default async function Navbar() {
                   <Link
                     key={category.id}
                     href={`/?category=${category.id}`}
+                    data-testid="categoryLink"
                     className="text-lg font-medium transition-colors hover:text-primary"
                   >
                     {category.name}

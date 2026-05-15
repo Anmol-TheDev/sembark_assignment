@@ -1,4 +1,4 @@
-import axiosClient from '@/lib/axios';
+import axiosClient from "@/lib/axios";
 
 export interface Category {
   id: number;
@@ -18,7 +18,7 @@ export interface Product {
 }
 
 export const getProducts = async (): Promise<Product[]> => {
-  const response = await axiosClient.get<Product[]>('/products');
+  const response = await axiosClient.get<Product[]>("/products");
   return response.data;
 };
 
@@ -26,9 +26,3 @@ export const getProductBySlug = async (slug: string): Promise<Product> => {
   const response = await axiosClient.get<Product>(`/products/slug/${slug}`);
   return response.data;
 };
-
-export const getProductsByCategory = async (categoryId: string): Promise<Product[]> => {
-  const response = await axiosClient.get<Product[]>(`/categories/${categoryId}/products`);
-  return response.data;
-};
-

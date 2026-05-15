@@ -24,7 +24,7 @@ export function CartSheet() {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline" size="icon" className="relative rounded-none border-dashed">
-          <ShoppingCart className="h-5 w-5" />
+          <ShoppingCart  data-testid="cart" className="h-5 w-5" />
           {totalItems > 0 && (
             <span key={totalItems} className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground animate-in zoom-in duration-300">
               {totalItems}
