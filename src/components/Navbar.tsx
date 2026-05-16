@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { getCategories } from '@/features/category/getCategorys';
 import type { Category } from '@/features/category/getCategorys';
 import { Button } from '@/src/components/ui/button';
@@ -33,15 +34,20 @@ export default function Navbar() {
             <span className="inline-block font-bold text-xl">Store</span>
           </Link>
           <nav className="hidden md:flex gap-6">
-            {categories.slice(0, 5).map((category) => (
-              <button
+            {categories.slice(0, 5).map((category, i) => (
+              <motion.button
                 key={category.id}
                 onClick={() => handleCategoryClick(category.id)}
                 data-testid="categoryLink"
                 className="text-sm font-medium transition-colors hover:text-primary"
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.07, duration: 0.3 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {category.name}
-              </button>
+              </motion.button>
             ))}
           </nav>
         </div>
