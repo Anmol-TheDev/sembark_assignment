@@ -5,10 +5,10 @@ import { ProductSort } from "@/components/ProductSort";
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ sort?: string }>;
+  searchParams: Promise<{ sort?: string; category?: string }>;
 }) {
-  const products = await getProducts();
-  const { sort } = await searchParams;
+  const { sort, category } = await searchParams;
+  const products = await getProducts(category);
 
   const sortedProducts = [...products].sort((a, b) => {
     switch (sort) {
