@@ -1,4 +1,4 @@
-import { getProducts, getCategories } from "@/features/products/product.action";
+import { getProducts} from "@/features/products/product.action";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductSort } from "@/components/ProductSort";
 
