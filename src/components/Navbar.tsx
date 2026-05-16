@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getCategories } from '@/features/category/getCategorys';
 import type { Category } from '@/features/category/getCategorys';
 import { Button } from '@/src/components/ui/button';
@@ -15,14 +15,14 @@ import { CartSheet } from './CartSheet';
 
 export default function Navbar() {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCategories().then(setCategories).catch(console.error);
   }, []);
 
   const handleCategoryClick = (categoryId: number) => {
-    setSearchParams({ category: String(categoryId) });
+    navigate(`/?category=${categoryId}`);
   };
 
   return (
