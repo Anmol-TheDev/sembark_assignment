@@ -1,14 +1,27 @@
-import { getProducts } from "@/features/products/product.action";
+import { getProducts, getCategories } from "@/features/products/product.action";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductSort } from "@/components/ProductSort";
 
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ sort?: string }>;
+  searchParams: Promise<{ 
+    sort?: string; 
+    price_min?: string; 
+    price_max?: string; 
+    categoryId?: string;
+  }>;
 }) {
-  const products = await getProducts();
-  const { sort } = await searchParams;
+  const { sort, price_min, price_max, categoryId } = await searchParams;
+  
+  const [products, categories] = await Promise.all([
+    getProducts({
+      price_min: price_min ? parseInt(price_min) : undefined,
+      price_max: price_max ? parseInt(price_max) : undefined,
+      categoryId: categoryId ? parseInt(categoryId) : undefined,
+    }),
+    getCategories(),
+  ]);
 
   const sortedProducts = [...products].sort((a, b) => {
     switch (sort) {
@@ -37,7 +50,9 @@ export default async function Home({
             quality and style.
           </p>
         </div>
-        <ProductSort />
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <ProductSort />
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-2 sm:gap-4 md:gap-6 lg:gap-8 sm:grid-cols-3 ">

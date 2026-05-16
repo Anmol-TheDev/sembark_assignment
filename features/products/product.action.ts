@@ -17,8 +17,21 @@ export interface Product {
   images: string[];
 }
 
-export const getProducts = async (): Promise<Product[]> => {
-  const response = await axiosClient.get<Product[]>("/products");
+export interface ProductParams {
+  title?: string;
+  price?: number;
+  categoryId?: number;
+  offset?: number;
+  limit?: number;
+}
+
+export const getProducts = async (params?: ProductParams): Promise<Product[]> => {
+  const response = await axiosClient.get<Product[]>("/products", { params });
+  return response.data;
+};
+
+export const getCategories = async (): Promise<Category[]> => {
+  const response = await axiosClient.get<Category[]>("/categories");
   return response.data;
 };
 
