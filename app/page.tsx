@@ -1,4 +1,4 @@
-import { getProducts } from "@/features/products/product.action";
+import { getProducts, getCategories } from "@/features/products/product.action";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductSort } from "@/components/ProductSort";
 
@@ -37,7 +37,9 @@ export default async function Home({
             quality and style.
           </p>
         </div>
-        <ProductSort />
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <ProductSort />
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-2 sm:gap-4 md:gap-6 lg:gap-8 sm:grid-cols-3 ">
